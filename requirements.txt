@@ -2,3 +2,4 @@ agno
 supabase
 google-api-python-client
 python-dotenv
+groq
