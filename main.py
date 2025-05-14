@@ -1,13 +1,9 @@
-def get_requirements(file_path):
-    """
-    Reads a requirements file and returns a list of packages.
-    """
-    with open(file_path, "r") as file:
-        return [
-            line.strip() for line in file if line.strip() and not line.startswith("#")
-        ]
+from agno.playground import Playground, serve_playground_app
+from agentic_task_app.agents.task_extractor_agent import TaskExtractorAgent
+
+task_extractor_agent = TaskExtractorAgent()
+
+app = Playground(agents=[task_extractor_agent.agent]).get_app()
 
 if __name__ == "__main__":
-    # Example usage
-    requirements = get_requirements("requirements.txt")
-    print(requirements)
+    serve_playground_app("main:app", reload=True)
